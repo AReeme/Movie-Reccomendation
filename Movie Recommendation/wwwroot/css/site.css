@@ -15,7 +15,7 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #ddd; /* change the color to lighter shade */
 }
 
 nav li {
@@ -31,7 +31,7 @@ nav a {
 }
 
     nav a:hover {
-        background-color: #ddd;
+        background-color: #bbb; /* change the color to a lighter shade */
         color: black;
     }
 
