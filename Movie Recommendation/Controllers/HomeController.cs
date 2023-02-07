@@ -22,7 +22,7 @@ namespace Movie_Recommendation.Controllers
         {
             return View();
         }
-        public IActionResult MovieQuiz()
+        public IActionResult Moviequiz()
         {
             return View();
         }
