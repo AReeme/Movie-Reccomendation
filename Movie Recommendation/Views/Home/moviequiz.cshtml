@@ -9,37 +9,78 @@
   <main>
     <h1>Movie Quiz</h1>
     <form>
-      <p>Which Genre do you like?</p>
-      <input type="checkbox" name="genre" value="Action">Action<br>
-      <input type="checkbox" name="genre" value="Comedy">Comedy<br>
-      <input type="checkbox" name="genre" value="Drama">Drama<br>
-      <input type="checkbox" name="genre" value="Horror">Horror<br>
-      <input type="checkbox" name="genre" value="Romance">Romance<br>
-      <br>
-      <p>Which Genre's do you hate?</p>
-      <input type="checkbox" name="hate-genre" value="Action">Action<br>
-      <input type="checkbox" name="hate-genre" value="Comedy">Comedy<br>
-      <input type="checkbox" name="hate-genre" value="Drama">Drama<br>
-      <input type="checkbox" name="hate-genre" value="Horror">Horror<br>
-      <input type="checkbox" name="hate-genre" value="Romance">Romance<br>
-      <br>
-      <p>What is Your Gender?</p>
-      <input type="radio" name="gender" value="Male">Male<br>
-      <input type="radio" name="gender" value="Female">Female<br>
-      <input type="radio" name="gender" value="Other">Other<br>
-      <br>
-      <p>Age</p>
-      <input type="text" name="age"><br><br>
-      <p>What is Your Request Rating</p>
-      <select name="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select><br><br>
-      <input type="submit" value="Submit">
-    </form> 
+  <div class="question active">
+    <p>Which Genre do you like?</p>
+    <input type="checkbox" name="genre" value="Action">Action<br>
+    <input type="checkbox" name="genre" value="Comedy">Comedy<br>
+    <input type="checkbox" name="genre" value="Drama">Drama<br>
+    <input type="checkbox" name="genre" value="Horror">Horror<br>
+    <input type="checkbox" name="genre" value="Romance">Romance<br>
+  </div>
+  <div class="question">
+    <p>Which Genre's do you hate?</p>
+    <input type="checkbox" name="hate-genre" value="Action">Action<br>
+    <input type="checkbox" name="hate-genre" value="Comedy">Comedy<br>
+    <input type="checkbox" name="hate-genre" value="Drama">Drama<br>
+    <input type="checkbox" name="hate-genre" value="Horror">Horror<br>
+    <input type="checkbox" name="hate-genre" value="Romance">Romance<br>
+  </div>
+  <div class="question">
+    <p>What is Your Gender?</p>
+    <input type="radio" name="gender" value="Male">Male<br>
+    <input type="radio" name="gender" value="Female">Female<br>
+    <input type="radio" name="gender" value="Other">Other<br>
+  </div>
+  <div class="question">
+    <p>Age</p>
+    <input type="text" name="age"><br><br>
+  </div>
+  <div class="question">
+    <p>What is Your Requested Rating</p>
+    <select name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select><br><br>
+  </div>
+  <input type="button" value="Next" class="next-question">
+</form>
   </main>
+
+<script>
+  const form = document.querySelector("form");
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+  form.addEventListener("change", (event) => {
+    const selectedValues = [...checkboxes, ...radioButtons]
+      .filter((input) => input.checked)
+      .map((input) => input.value);
+
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.disabled && !checkbox.checked) {
+        checkbox.disabled = false;
+      } else {
+        checkbox.disabled = selectedValues.includes(checkbox.value);
+      }
+    });
+  });
+
+  $(document).ready(function() {
+  var currentQuestionIndex = 0;
+  var questions = $(".question");
+  questions.hide();
+  $(questions[currentQuestionIndex]).show();
+
+  $("input[type='submit']").click(function(event) {
+    event.preventDefault();
+    $(questions[currentQuestionIndex]).slideUp();
+    currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+    $(questions[currentQuestionIndex]).slideDown();
+  });
+});
+</script>
 </body>
 </html>

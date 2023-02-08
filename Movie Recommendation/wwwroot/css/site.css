@@ -3,12 +3,6 @@ body {
     background-color: #f2f2f2;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
 
 nav ul {
     list-style-type: none;
@@ -72,3 +66,22 @@ input[type="submit"] {
         background-color: #ddd;
         color: black;
     }
+
+.question {
+    display: none;
+}
+
+    .question.active {
+        display: block;
+        animation: slideIn 0.5s ease-in-out;
+    }
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
