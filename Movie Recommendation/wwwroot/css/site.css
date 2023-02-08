@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #add8e6;
 }
 
 
@@ -35,13 +35,15 @@ main {
 }
 
 form {
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #333;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
-    box-shadow: 2px 2px 5px #333;
-    margin: 20px auto;
-    width: 80%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 400px;
+    height: 300px;
+    margin: 50px auto;
+    text-align: center;
 }
 
 input[type="text"], select {
@@ -67,21 +69,21 @@ input[type="submit"] {
         color: black;
     }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .question {
     display: none;
 }
 
     .question.active {
         display: block;
-        animation: slideIn 0.5s ease-in-out;
+        animation: fadeIn 0.5s ease-in-out;
     }
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}

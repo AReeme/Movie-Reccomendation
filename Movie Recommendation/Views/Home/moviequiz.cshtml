@@ -50,37 +50,41 @@
   </main>
 
 <script>
-  const form = document.querySelector("form");
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  const radioButtons = document.querySelectorAll('input[type="radio"]');
+const form = document.querySelector("form");
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const radioButtons = document.querySelectorAll("input[type='radio']");
+const questions = form.querySelectorAll(".question");
+let currentQuestionIndex = 0;
 
-  form.addEventListener("change", (event) => {
-    const selectedValues = [...checkboxes, ...radioButtons]
-      .filter((input) => input.checked)
-      .map((input) => input.value);
+questions[currentQuestionIndex].classList.add("active");
 
-    checkboxes.forEach((checkbox) => {
-      if (checkbox.disabled && !checkbox.checked) {
-        checkbox.disabled = false;
-      } else {
-        checkbox.disabled = selectedValues.includes(checkbox.value);
+const nextButton = document.querySelector(".next-question");
+nextButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  questions[currentQuestionIndex].classList.remove("active");
+  currentQuestionIndex += 1;
+  if (currentQuestionIndex >= questions.length) {
+    alert("Quiz finished!");
+    return;
+  }
+  questions[currentQuestionIndex].classList.add("active");
+});
+
+// Check if the selected answer in the first question is also selected in the second question
+form.addEventListener("change", (event) => {
+  if (event.target.type === "checkbox") {
+    checkboxes.forEach(checkbox => {
+      if (checkbox.value === event.target.value && checkbox !== event.target) {
+        checkbox.disabled = event.target.checked;
       }
     });
-  });
-
-  $(document).ready(function() {
-  var currentQuestionIndex = 0;
-  var questions = $(".question");
-  questions.hide();
-  $(questions[currentQuestionIndex]).show();
-
-  $("input[type='submit']").click(function(event) {
-    event.preventDefault();
-    $(questions[currentQuestionIndex]).slideUp();
-    currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
-    $(questions[currentQuestionIndex]).slideDown();
-  });
+  }
 });
+
+
 </script>
+
 </body>
 </html>
+
+
