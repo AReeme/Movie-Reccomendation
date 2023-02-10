@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Snack Quiz</title>
+</head>
+<body>
+  </header>
+  <main>
+    <h1>Snack Quiz</h1>
+    <form>
+  <div class="question active">
+    <p>What Kind Of Snack Do You Like</p>
+    <input type="checkbox" name="genre" value="Chips">Chips<br>
+    <input type="checkbox" name="genre" value="Candy">Candy<br>
+    <input type="checkbox" name="genre" value="Food">Food<br>
+
+  </div>
+  <div class="question">
+    <p>Are you Okay With Glutten Substances</p>
+    <input type="radio" name="gender" value="Yes">Yes<br>
+    <input type="radio" name="gender" value="No">No<br>
+  </div>
+  <input type="button" value="Next" class="next-question">
+</form>
+  </main>
+
+<script>
+const form = document.querySelector("form");
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const radioButtons = document.querySelectorAll("input[type='radio']");
+const questions = form.querySelectorAll(".question");
+let currentQuestionIndex = 0;
+
+questions[currentQuestionIndex].classList.add("active");
+
+const nextButton = document.querySelector(".next-question");
+nextButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  questions[currentQuestionIndex].classList.remove("active");
+  currentQuestionIndex += 1;
+  if (currentQuestionIndex >= questions.length) {
+    alert("Quiz finished!");
+    return;
+  }
+  questions[currentQuestionIndex].classList.add("active");
+});
+
+// Check if the selected answer in the first question is also selected in the second question
+form.addEventListener("change", (event) => {
+  if (event.target.type === "checkbox") {
+    checkboxes.forEach(checkbox => {
+      if (checkbox.value === event.target.value && checkbox !== event.target) {
+        checkbox.disabled = event.target.checked;
+      }
+    });
+  }
+});
+
+
+</script>
+
+</body>
+</html>
+
+
