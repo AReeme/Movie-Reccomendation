@@ -12,6 +12,6 @@ namespace Movie_Recommendation.Data
         }
 
         //Will Create the Movies Table in the db using Movie.cs Model
-        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Snack> Snacks { get; set; }
     }
 }
