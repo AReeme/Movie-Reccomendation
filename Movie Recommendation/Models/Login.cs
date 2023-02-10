@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Primitives;
+
 using System.ComponentModel.DataAnnotations;
 
 namespace Movie_Recommendation.Models
@@ -10,7 +11,7 @@ namespace Movie_Recommendation.Models
         int id { get; set; }
 
         [Required]
-        string loginName { get; set; }
+        string userName { get; set; }
         [Required]
         string password { get; set; }
 
@@ -18,10 +19,10 @@ namespace Movie_Recommendation.Models
 
         public Login() { }
 
-        public Login(int id, string loginName, string password, bool darkMode)
+        public Login(int id, string userName, string password, bool darkMode)
         {
             this.id = id;
-            this.loginName = loginName;
+            this.userName = userName;
             this.password = password;
             this.darkMode = darkMode;
         }
