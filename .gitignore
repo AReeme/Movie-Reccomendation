@@ -361,3 +361,18 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Visual Studio Dependencies
+*.suo
+*.user
+*.aps
+*.pdb
+*.opensdf
+*.sdf
+*.cachefile
+.VC.db
+_ReSharper./
+[Bb]in/
+[Oo]bj/
+[Rr]elease/
+[Dd]ebug/
