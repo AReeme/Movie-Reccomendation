@@ -370,8 +370,8 @@ FodyWeavers.xsd
 *.opensdf
 *.sdf
 *.cachefile
-.VC.db
-_ReSharper./
+*.VC.db
+_ReSharper.*/
 [Bb]in/
 [Oo]bj/
 [Rr]elease/

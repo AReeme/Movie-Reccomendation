@@ -26,5 +26,10 @@ namespace Movie_Recommendation.Models
             this.password = password;
             this.darkMode = darkMode;
         }
+
+        public override string ToString()
+        {
+            return @"(userName) - (password) - (darkMode)";
+        }
     }
 }
