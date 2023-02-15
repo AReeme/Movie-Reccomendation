@@ -5,29 +5,20 @@ namespace Movie_Recommendation.Data
 {
     public class SnackListDAL : IDataAccessLayerSnack
     {
-        public void AddSnack(Snack snack)
+        private AppDbContext db;
+        public SnackListDAL(AppDbContext indb)
         {
-            throw new NotImplementedException();
+            db = indb;
         }
 
-        public void EditSnack(Snack s)
+        public Snack GetSnack(int? id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Movie GetSnack(int? id)
-        {
-            throw new NotImplementedException();
+            return db.Snacks.Where(m => m.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Snack> GetSnacks()
         {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveSnack(int? id)
-        {
-            throw new NotImplementedException();
+            return db.Snacks.OrderBy(m => m.Name).ToList();
         }
     }
 }
