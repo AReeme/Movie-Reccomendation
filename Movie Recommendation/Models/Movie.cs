@@ -19,6 +19,8 @@ namespace Movie_Recommendation.Models
 
         public string? Genre { get; set; }
 
+        public string? UserId { get; set; }
+
         public Movie()
         { }
 

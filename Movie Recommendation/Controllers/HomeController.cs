@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Movie_Recommendation.Data;
 using Movie_Recommendation.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Movie_Recommendation.Controllers
 {
@@ -18,10 +21,52 @@ namespace Movie_Recommendation.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [Authorize]
+        [HttpGet]
+        public IActionResult RecommendMovie()
         {
             return View();
         }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult RecommendMovie(Movie m)
+        {
+            if (ModelState.IsValid)
+            {
+                m.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            return View();
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult RecommendSnack()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult RecommendSnack(Snack s)
+        {
+            if(ModelState.IsValid)
+            {
+                s.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            string x = User.FindFirstValue(ClaimTypes.Name);
+            x = User.FindFirstValue(ClaimTypes.Email);
+            x = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            return Content(x);
+        }
+
+
         public IActionResult Moviequiz()
         {
             return View();
