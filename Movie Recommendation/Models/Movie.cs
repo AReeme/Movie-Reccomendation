@@ -20,7 +20,7 @@ namespace Movie_Recommendation.Models
         public bool Adult { get; set; }
 
         public List<string> BelongsToCollection { get; set; }
-        public List<string> Genres { get; set; }
+        public Array[] Genres { get; set; }
 
         public DateTime ReleaseDate { get; set; }
         public long Revenue { get; set; }
