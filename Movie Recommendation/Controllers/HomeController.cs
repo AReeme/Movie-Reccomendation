@@ -37,6 +37,7 @@ namespace Movie_Recommendation.Controllers
             {
                 Movie rMovie = JsonConvert.DeserializeObject<Movie>(await client.GetStringAsync(url + movieId + "?api_key=" + key));
                 string name = rMovie.Title;
+                
                 return View("MovieRecommend", name);
             }
  
