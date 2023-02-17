@@ -20,7 +20,7 @@ namespace Movie_Recommendation.Models
         public bool Adult { get; set; }
 
         public List<string> BelongsToCollection { get; set; }
-        public Array[] Genres { get; set; }
+        public List<Object> Genres { get; set; }
 
         public DateTime ReleaseDate { get; set; }
         public long Revenue { get; set; }
@@ -45,7 +45,7 @@ namespace Movie_Recommendation.Models
         public string SimilarMovies { get; set; }
         public string SearchContainer { get; set; }
         public List<string> Changes { get; set; }
-
         public string? UserId { get; set; }
+
     }
 }
