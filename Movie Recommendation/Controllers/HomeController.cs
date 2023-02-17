@@ -29,7 +29,7 @@ namespace Movie_Recommendation.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> RecommendMovie()
+        public async Task<IActionResult> MovieRecommend()
         {
             string movieId = "315162";
             var movie = await client.GetAsync(url + movieId + "?api_key=" + key);
