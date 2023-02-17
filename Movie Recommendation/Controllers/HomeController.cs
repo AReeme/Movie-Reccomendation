@@ -37,7 +37,7 @@ namespace Movie_Recommendation.Controllers
             {
                 Movie rMovie = JsonConvert.DeserializeObject<Movie>(await client.GetStringAsync(url + movieId + "?api_key=" + key));
                 string name = rMovie.Title;
-                return View("RecommendMovie", name);
+                return View("MovieRecommend", name);
             }
  
                 return Content("this did not work stupid");
@@ -45,7 +45,7 @@ namespace Movie_Recommendation.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult RecommendMovie(Movie m)
+        public IActionResult MovieRecommend(Movie m)
         {
             if (ModelState.IsValid)
             {
