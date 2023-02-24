@@ -75,11 +75,12 @@ namespace Movie_Recommendation.Controllers
 
         public IActionResult Privacy()
         {
-            string x = User.FindFirstValue(ClaimTypes.Name);
-            x = User.FindFirstValue(ClaimTypes.Email);
-            x = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //string x = User.FindFirstValue(ClaimTypes.Name);
+            //x = User.FindFirstValue(ClaimTypes.Email);
+            //x = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            return Content(x);
+            //return Content(x);
+            return View();
         }
 
 
