@@ -16,11 +16,10 @@ namespace Movie_Recommendation.Controllers
         private string key = "864f586643a869865bfc9ec19ca5fdba";
         private string url = "https://api.themoviedb.org/3/movie/";
 
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        IDataAccessLayerSnack dal;
+        public HomeController(IDataAccessLayerSnack indal)
         {
-            _logger = logger;
+            dal = indal;
         }
 
         public IActionResult Index()
@@ -28,11 +27,6 @@ namespace Movie_Recommendation.Controllers
             return View();
         }
 
-        IDataAccessLayerSnack dal;
-        public HomeController(IDataAccessLayerSnack indal)
-        {
-            dal = indal;
-        }
 
         [Authorize]
         [HttpGet]
@@ -96,9 +90,9 @@ namespace Movie_Recommendation.Controllers
             return View();
         }
 
-        public IActionResult SnackFilter(string name, string type, string isGlutenFree)
+        public IActionResult SnackFilter(string? name, string? type, string? isglutenfree)
         {
-            return View("snackquiz", dal.FilterSnacks(name, type, isGlutenFree));
+            return View("snackquiz", dal.FilterSnacks(name, type, isglutenfree));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
