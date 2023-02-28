@@ -11,13 +11,13 @@ namespace Movie_Recommendation.Models
 
         public string? Type { get; set; }
 
-        public bool? isGlutenFree { get; set; }
+        public string? isGlutenFree { get; set; }
 
         public string? UserId { get; set; }
 
         public Snack() {}
 
-        public Snack(int id, string? name, string? type, bool? isGlutenFree)
+        public Snack(int id, string? name, string? type, string? isGlutenFree)
         {
             Id = id;
             Name = name;

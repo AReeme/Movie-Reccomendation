@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Security.Claims;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Movie_Recommendation.Interface;
 
 namespace Movie_Recommendation.Controllers
 {
@@ -25,6 +26,12 @@ namespace Movie_Recommendation.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        IDataAccessLayerSnack dal;
+        public HomeController(IDataAccessLayerSnack indal)
+        {
+            dal = indal;
         }
 
         [Authorize]
@@ -75,11 +82,6 @@ namespace Movie_Recommendation.Controllers
 
         public IActionResult Privacy()
         {
-            //string x = User.FindFirstValue(ClaimTypes.Name);
-            //x = User.FindFirstValue(ClaimTypes.Email);
-            //x = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            //return Content(x);
             return View();
         }
 
@@ -92,6 +94,11 @@ namespace Movie_Recommendation.Controllers
         public IActionResult Snackquiz()
         {
             return View();
+        }
+
+        public IActionResult SnackFilter(string name, string type, string isGlutenFree)
+        {
+            return View("snackquiz", dal.FilterSnacks(name, type, isGlutenFree));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
