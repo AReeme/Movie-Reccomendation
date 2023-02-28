@@ -10,12 +10,15 @@
         <p>@Model.Title</p>
         <p>@Model.Runtime Minutes</p>
         <p>@Model.Overview</p>
-        <p>@Model.Revenue</p>
-        <p>@Model.VoteAverage</p>
-        <p>@Model.SimilarMovies</p>
+        @for (int i = 0; i < @Model.Genres.Count(); i++)
+        {
+          <p>@Model.Genres[i]</p>
+        }
+
         
         @if (@Model.Images == null)
         {
+            
             <p>Nothing Grabbed.</p>
         }
         <img src="@Model.Images" />
