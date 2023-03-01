@@ -14,7 +14,7 @@ namespace Movie_Recommendation.Controllers
     {
         private HttpClient client = new HttpClient();
         private string key = "864f586643a869865bfc9ec19ca5fdba";
-        private string url = "https://api.themoviedb.org/3/movie/";
+        private string url = "https://api.themoviedb.org/3/";
 
         IDataAccessLayerSnack dal;
         public HomeController(IDataAccessLayerSnack indal)
@@ -68,7 +68,7 @@ namespace Movie_Recommendation.Controllers
                 adult = "false";
             }
             //string movieId = "76600";
-            var awMovie = await client.GetAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey);
+            var awMovie = await client.GetAsync(url + "discover/movie?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey);
             //var movie = await client.GetAsync(url + movieId + "?api_key=" + key);
             if (awMovie.IsSuccessStatusCode)
             {
