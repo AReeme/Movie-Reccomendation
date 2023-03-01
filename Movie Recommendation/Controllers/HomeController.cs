@@ -42,7 +42,7 @@ namespace Movie_Recommendation.Controllers
                 {
                     genresKey += genres[i];
                     genresKeyCheck+= genres[i];
-                    if(i != genres.Count() - 1)
+                    if(i < genres.Count() - 1)
                     {
                         genresKey += "%20";
                     }
@@ -61,7 +61,7 @@ namespace Movie_Recommendation.Controllers
                 {
                     hateGenresKey += hateGenres[i];
                     hateGenresKeyCheck+= hateGenres[i];
-                    if (i != hateGenres.Count() - 1)
+                    if (i < hateGenres.Count() - 1)
                     {
                         genresKey += "%20";
                     }
