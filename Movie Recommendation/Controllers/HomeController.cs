@@ -29,7 +29,7 @@ namespace Movie_Recommendation.Controllers
         
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> MovieRecommendstring(string genre, string genre1,string genre2, string genre3, string genre4, string hateGenre, string hateGenre1, string hateGenre2, string hateGenre3, string hateGenre4, int age, int rating)
+        public async Task<IActionResult> MovieRecommend(string genre, string genre1,string genre2, string genre3, string genre4, string hateGenre, string hateGenre1, string hateGenre2, string hateGenre3, string hateGenre4, int age, int rating)
         {
             //will create a string to search genres in the api key
             string adult="";
