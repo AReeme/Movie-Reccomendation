@@ -21,7 +21,7 @@
             
             <p>Nothing Grabbed.</p>
         }
-        <img src="https://image.tmdb.org/t/p/original/" + @Model.Poster_Path />
+        <img src=$"https://image.tmdb.org/t/p/original/{0}", @Model.Poster_Path />
     </main>
 </body>
 </html>
