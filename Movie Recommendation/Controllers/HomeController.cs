@@ -36,7 +36,7 @@ namespace Movie_Recommendation.Controllers
             string[] genres = { genre, genre1, genre2, genre3, genre4 };
             string genresKey = "";
             string genresKeyCheck = "";
-            for(int i = 0; i <= genres.Count(); i++) //might have to take out the = sign near genres.count()
+            for(int i = 0; i < genres.Count(); i++) //might have to take out the = sign near genres.count()
             {
                 if (genres[i] != null)
                 {
@@ -55,7 +55,7 @@ namespace Movie_Recommendation.Controllers
             string[] hateGenres = { hateGenre, hateGenre1, hateGenre2, hateGenre3, hateGenre4 };
             string hateGenresKey = "";
             string hateGenresKeyCheck = "";
-            for (int i = 0; i <= hateGenres.Count(); i++) //might have to take out the = sign near genres.count()
+            for (int i = 0; i < hateGenres.Count(); i++) //might have to take out the = sign near genres.count()
             {
                 if (hateGenres[i] != null)
                 {
