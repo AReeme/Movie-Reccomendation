@@ -37,7 +37,7 @@ namespace Movie_Recommendation.Controllers
             string genresKey = "";
             for (int i = 0; i < genres.Length; i++)
             {
-                if (!string.IsNullOrEmpty(genres[i]))
+                if (genres[i] != null)
                 {
                     genresKey += genres[i];
                     if (i != genres.Length - 1)
@@ -50,7 +50,7 @@ namespace Movie_Recommendation.Controllers
             string hateGenresKey = "";
             for (int i = 0; i < hateGenres.Length; i++)
             {
-                if (!string.IsNullOrEmpty(hateGenres[i]))
+                if (hateGenres[i] != null)
                 {
                     hateGenresKey += hateGenres[i];
                     if (i != hateGenres.Length - 1)
