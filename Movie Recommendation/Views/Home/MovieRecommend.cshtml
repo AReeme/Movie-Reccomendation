@@ -2,24 +2,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="~/css/Movie.css">
     <title>Movie Recommendation</title>
 </head>
 <body>
     <main>
-        <p>@Model.Title</p>
-                @if (@Model.Poster_Path == null)
-        {
-            
-            <p>Nothing Grabbed.</p>
-        }
-        <img width="300" height="400" src="https://image.tmdb.org/t/p/original/@Model.Poster_Path" />
-        <p>@Model.Runtime Minutes</p>
-        <p>@Model.Overview</p>
-        @for (int i = 0; i < @Model.Genres.Count(); i++)
-        {
-          <p>@Model.Genres[i]</p>
-        }
+        <table>
+            <tr>
+                <th>Title</th>
+                <td>@Model.Title</td>
+            </tr>
+            <tr>
+                <th>Poster</th>
+                <td>
+                    @if (@Model.Poster_Path == null)
+                    {
+                        <p>Nothing grabbed.</p>
+                    }
+                    else
+                    {
+                        <img src="https://image.tmdb.org/t/p/original/@Model.Poster_Path" alt="Movie Poster" />
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Runtime</th>
+                <td>@Model.Runtime Minutes</td>
+            </tr>
+            <tr>
+                <th>Overview</th>
+                <td>@Model.Overview</td>
+            </tr>
+            <tr>
+                <th>Genres</th>
+                <td>
+                    <ul>
+                        @for (int i = 0; i < @Model.Genres.Count(); i++)
+                        {
+                            <li>@Model.Genres[i]</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </table>
     </main>
 </body>
 </html>
