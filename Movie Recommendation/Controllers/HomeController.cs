@@ -83,7 +83,7 @@ namespace Movie_Recommendation.Controllers
             var movie = await client.GetAsync(url + movieId + "?api_key=" + key);
             if (movie.IsSuccessStatusCode)
             {
-                Movie rMovie = JsonConvert.DeserializeObject<Movie>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres" + hateGenresKey));
+                Movie rMovie = JsonConvert.DeserializeObject<Movie>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
 
 
                 return View("MovieRecommend", rMovie);
