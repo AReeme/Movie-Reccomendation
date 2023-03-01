@@ -241,8 +241,8 @@ namespace Movie_Recommendation.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("isGlutenFree")
-                        .HasColumnType("bit");
+                    b.Property<string>("isGlutenFree")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

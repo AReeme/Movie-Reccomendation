@@ -12,7 +12,7 @@ using Movie_Recommendation.Data;
 namespace Movie_Recommendation.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230215220602_AddIdentityToDb")]
+    [Migration("20230301015507_AddIdentityToDb")]
     partial class AddIdentityToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -240,8 +240,11 @@ namespace Movie_Recommendation.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("isGlutenFree")
-                        .HasColumnType("bit");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("isGlutenFree")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
