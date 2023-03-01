@@ -12,8 +12,8 @@ using Movie_Recommendation.Data;
 namespace Movie_Recommendation.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230216214655_add userid")]
-    partial class adduserid
+    [Migration("20230301015425_Initial db creation")]
+    partial class Initialdbcreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -243,8 +243,8 @@ namespace Movie_Recommendation.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("isGlutenFree")
-                        .HasColumnType("bit");
+                    b.Property<string>("isGlutenFree")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
