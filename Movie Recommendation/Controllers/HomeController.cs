@@ -26,52 +26,40 @@ namespace Movie_Recommendation.Controllers
         {
             return View();
         }
-        
+
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> MovieRecommend(string genre, string genre1,string genre2, string genre3, string genre4, string hateGenre, string hateGenre1, string hateGenre2, string hateGenre3, string hateGenre4, int age, int rating)
+        public async Task<IActionResult> MovieRecommend(string genre, string genre1, string genre2, string genre3, string genre4, string hateGenre, string hateGenre1, string hateGenre2, string hateGenre3, string hateGenre4, int age, int rating)
         {
             //will create a string to search genres in the api key
-            string adult="";
+            string adult = "";
             string[] genres = { genre, genre1, genre2, genre3, genre4 };
             string genresKey = "";
-            string genresKeyCheck = "";
-            for(int i = 0; i < genres.Count(); i++) //might have to take out the = sign near genres.count()
+            for (int i = 0; i < genres.Length; i++)
             {
-                if (genres[i] != null)
+                if (!string.IsNullOrEmpty(genres[i]))
                 {
                     genresKey += genres[i];
-                    genresKeyCheck+= genres[i];
-                    if(i != genres.Count() - 1)
+                    if (i != genres.Length - 1)
                     {
                         genresKey += "%20";
                     }
-                }
-                else
-                {
-                    continue;
                 }
             }
             string[] hateGenres = { hateGenre, hateGenre1, hateGenre2, hateGenre3, hateGenre4 };
             string hateGenresKey = "";
-            string hateGenresKeyCheck = "";
-            for (int i = 0; i < hateGenres.Count(); i++) //might have to take out the = sign near genres.count()
+            for (int i = 0; i < hateGenres.Length; i++)
             {
-                if (hateGenres[i] != null)
+                if (!string.IsNullOrEmpty(hateGenres[i]))
                 {
                     hateGenresKey += hateGenres[i];
-                    hateGenresKeyCheck+= hateGenres[i];
-                    if (i != hateGenres.Count() - 1)
+                    if (i != hateGenres.Length - 1)
                     {
-                        genresKey += "%20";
+                        hateGenresKey += "%20";
                     }
                 }
-                else
-                {
-                    continue;
-                }
             }
-            if(age >= 18)
+            if (age >= 18)
             {
                 adult = "true";
             }
@@ -83,13 +71,11 @@ namespace Movie_Recommendation.Controllers
             var movie = await client.GetAsync(url + movieId + "?api_key=" + key);
             if (movie.IsSuccessStatusCode)
             {
-                Movie rMovie = JsonConvert.DeserializeObject<Movie>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres" + hateGenresKey));
-
-
+                Movie rMovie = JsonConvert.DeserializeObject<Movie>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
                 return View("MovieRecommend", rMovie);
             }
- 
-                return Content("this did not work stupid");
+
+            return Content("this did not work stupid");
         }
 
         [Authorize]
@@ -114,7 +100,7 @@ namespace Movie_Recommendation.Controllers
         [HttpPost]
         public IActionResult RecommendSnack(Snack s)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 s.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             }
