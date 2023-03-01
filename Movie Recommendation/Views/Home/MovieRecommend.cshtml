@@ -14,14 +14,14 @@
         {
           <p>@Model.Genres[i]</p>
         }
-
+        <p>https://image.tmdb.org/t/p/original/@Model.Poster_Path</p>
         
         @if (@Model.Images == null)
         {
             
             <p>Nothing Grabbed.</p>
         }
-        <img src=$"https://image.tmdb.org/t/p/original/{0}", @Model.Poster_Path />
+        <img width="300" height="300" src="https://image.tmdb.org/t/p/original/@Model.Poster_Path" />
     </main>
 </body>
 </html>
