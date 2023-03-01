@@ -14,8 +14,8 @@ namespace Movie_Recommendation.Models
         public string Overview { get; set; }
         public string Homepage { get; set; }
 
-        public string BackdropPath { get; set; }
-        public string PosterPath { get; set; }
+        public string Backdrop_Path { get; set; }
+        public string Poster_Path { get; set; }
 
         public bool Adult { get; set; }
 
