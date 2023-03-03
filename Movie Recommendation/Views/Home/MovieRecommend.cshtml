@@ -1,4 +1,5 @@
-﻿@model Movie
+﻿@model MovieResults
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,28 +11,28 @@
         <table>
             <tr>
                 <th>Title</th>
-                <td>@Model.Title</td>
+                <td>@Model.Results[6]</td>
             </tr>
             <tr>
                 <th>Poster</th>
                 <td>
-                    @if (@Model.Poster_Path == null)
+                    @if (@Model.Results[0] == null)
                     {
                         <p>Nothing grabbed.</p>
                     }
                     else
                     {
-                        <img src="https://image.tmdb.org/t/p/original/@Model.Poster_Path" alt="Movie Poster" />
+                        <img src="https://image.tmdb.org/t/p/original/@Model.Results[0]" alt="Movie Poster" />
                     }
                 </td>
             </tr>
             <tr>
-                <th>Runtime</th>
-                <td>@Model.Runtime Minutes</td>
+                <th>Popularity</th>
+                <td>@Model.Results[10].ToString</td>
             </tr>
             <tr>
                 <th>Overview</th>
-                <td>@Model.Overview</td>
+                <td>@Model.Results[2]</td>
             </tr>
             <tr>
                 <th>Genres</th>
