@@ -76,10 +76,9 @@ namespace Movie_Recommendation.Controllers
                 
                 var random = new Random();
                 int r = random.Next(0, 10);
-                string json = JsonConvert.DeserializeObject<string>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
-                List<MResults> mResults = JsonConvert.DeserializeObject<List<MResults>>(json);
+                MResults[] rMovie = JsonConvert.DeserializeObject<MResults[]>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
                 
-                return View("MovieRecommend", mResults);
+                return View("MovieRecommend", rMovie);
             }
 
             return Content("this did not work stupid");
