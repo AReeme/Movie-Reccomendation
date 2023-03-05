@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Movie_Recommendation.Interface;
+using Newtonsoft.Json.Converters;
 
 namespace Movie_Recommendation.Controllers
 {
@@ -72,11 +73,13 @@ namespace Movie_Recommendation.Controllers
             //var movie = await client.GetAsync(url + movieId + "?api_key=" + key);
             if (awMovie.IsSuccessStatusCode)
             {
+                
                 var random = new Random();
                 int r = random.Next(0, 10);
-                MResults[] rMovie = JsonConvert.DeserializeObject<List<MResults>>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey)).ToArray();
-                MResults result = rMovie[r];
-                return View("MovieRecommend", result);
+                string json = JsonConvert.DeserializeObject<string>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
+                List<MResults> mResults = JsonConvert.DeserializeObject<List<MResults>>(json);
+                
+                return View("MovieRecommend", mResults);
             }
 
             return Content("this did not work stupid");
