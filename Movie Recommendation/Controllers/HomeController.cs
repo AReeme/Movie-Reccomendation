@@ -75,8 +75,8 @@ namespace Movie_Recommendation.Controllers
             {
                 
                 var random = new Random();
-                int r = random.Next(0, 10);
                 MResults[] rMovie = JsonConvert.DeserializeObject<MResults[]>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
+                int r = random.Next(0, 10);
                 
                 return View("MovieRecommend", rMovie);
             }
@@ -96,21 +96,47 @@ namespace Movie_Recommendation.Controllers
         }
 
         [Authorize]
-        [HttpGet]
+        [HttpPost]
         public IActionResult RecommendSnack()
         {
             return View();
         }
 
         [Authorize]
-        [HttpPost]
-        public IActionResult RecommendSnack(Snack s)
+        [HttpGet]
+        public IActionResult RecommendSnack(string candy, string chips, string food, string GlutenY, string GlutenN)
         {
-            if (ModelState.IsValid)
+            string gluten = "";
+            if(GlutenY!=null)
             {
-                s.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                gluten = GlutenY;
             }
-            return View();
+            else
+            {
+                gluten = GlutenN;
+            }
+            if(candy != null)
+            {
+                List<Snack> snack =  dal.FilterSnacks(candy, gluten).ToList();
+                var random = new Random();
+                int r = random.Next(snack.Count);
+                return View(snack.ElementAt(r));
+            }
+            else if(chips != null)
+            {
+                List<Snack> snack = dal.FilterSnacks(chips, gluten).ToList();
+                var random = new Random();
+                int r = random.Next(0, snack.Count);
+                return View(snack.ElementAt(r));
+            }
+            else if(food != null)
+            {
+                List<Snack> snack = dal.FilterSnacks(food, gluten).ToList();
+                var random = new Random();
+                int r = random.Next(snack.Count);
+                return View(snack.ElementAt(r));
+            }
+            return Content("Filter did not work");
         }
 
         public IActionResult Privacy()
@@ -129,9 +155,9 @@ namespace Movie_Recommendation.Controllers
             return View();
         }
 
-        public IActionResult SnackFilter(string? name, string? type, string? isglutenfree)
+        public IActionResult SnackFilter(string? type, string? isglutenfree)
         {
-            return View("snackquiz", dal.FilterSnacks(name, type, isglutenfree));
+            return View("snackquiz", dal.FilterSnacks(type, isglutenfree));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

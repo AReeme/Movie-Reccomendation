@@ -1,0 +1,27 @@
+﻿@model Snack
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/Movie.css">
+    <title>Snack Recommendation</title>
+</head>
+<body>
+    <main>
+        <table>
+            <tr>
+                <th>Snack Name</th>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <th>Snack Type</th>
+                <td>@Model.Type</td>
+            </tr>
+            <tr>
+                <th>Is this Snack Gluten Free?</th>
+                <td>@Model.isGlutenFree</td>
+            </tr>
+        </table>
+    </main>
+</body>
+</html>

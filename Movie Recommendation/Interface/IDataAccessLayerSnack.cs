@@ -6,6 +6,6 @@ namespace Movie_Recommendation.Interface
     {
         IEnumerable<Snack> GetSnacks();
         Snack GetSnack(int? id);
-        IEnumerable<Snack> FilterSnacks(string? name, string? type, string? isGlutenFree);
+        IEnumerable<Snack> FilterSnacks(string? type, string? isGlutenFree);
     }
 }

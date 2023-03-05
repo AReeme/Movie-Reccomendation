@@ -18,15 +18,14 @@ namespace Movie_Recommendation.Data
 
         public IEnumerable<Snack> GetSnacks()
         {
-            return db.Snacks.OrderBy(m => m.Name).ToList();
+            return db.Snacks;
         }
 
-        public IEnumerable<Snack> FilterSnacks(string name, string type, string isGlutenFree)
+        public IEnumerable<Snack> FilterSnacks(string type, string isGlutenFree)
         {
             var snacks = GetSnacks();
-            if (!string.IsNullOrEmpty(name)) snacks = snacks.Where(x => x.Name.ToLower().Contains(name.ToLower())); 
-            if (!string.IsNullOrEmpty(type)) snacks = snacks.Where(x => x.Type.ToLower().Contains(name.ToLower())); 
-            if (!string.IsNullOrEmpty(isGlutenFree)) snacks = snacks.Where(x => x.isGlutenFree.ToLower().Contains(name.ToLower()));
+            if (!string.IsNullOrEmpty(type)) snacks = snacks.Where(x => x.Type.ToLower().Contains(type.ToLower())); 
+            if (!string.IsNullOrEmpty(isGlutenFree)) snacks = snacks.Where(x => x.isGlutenFree.ToLower().Contains(isGlutenFree.ToLower()));
 
             return snacks;
         }
