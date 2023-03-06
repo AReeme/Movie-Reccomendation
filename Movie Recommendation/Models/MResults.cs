@@ -30,6 +30,6 @@ namespace Movie_Recommendation.Models
 
 		public bool video { get; set; }
 
-		public int vote_average { get; set; }
+		public float vote_average { get; set; }
 	}
 }
