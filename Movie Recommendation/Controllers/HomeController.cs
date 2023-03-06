@@ -8,6 +8,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Movie_Recommendation.Interface;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 namespace Movie_Recommendation.Controllers
 {
@@ -76,9 +77,11 @@ namespace Movie_Recommendation.Controllers
                 
                 var random = new Random();
                 MResults[] rMovie = JsonConvert.DeserializeObject<MResults[]>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
-                int r = random.Next(0, 10);
+                string json = JsonConvert.SerializeObject(rMovie);
+                JArray jsonArray = JArray.Parse(json);
+                int r = random.Next(0, jsonArray.Count());
                 
-                return View("MovieRecommend", rMovie);
+                return View("MovieRecommend", rMovie[r]);
             }
 
             return Content("this did not work stupid");
