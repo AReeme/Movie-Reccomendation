@@ -24,7 +24,7 @@ namespace Movie_Recommendation.Models
 
 		public string? backdrop_path { get; set; }
 
-		public int popularity { get; set; }
+		public float popularity { get; set; }
 
 		public int vote_count { get; set; }
 
