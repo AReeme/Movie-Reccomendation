@@ -88,13 +88,9 @@ namespace Movie_Recommendation.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult MovieRecommend(Movie m)
+        public IActionResult MovieRecommend(MResults results)
         {
-            if (ModelState.IsValid)
-            {
-                m.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            }
-            return View();
+            return View(results);
         }
 
         [Authorize]
