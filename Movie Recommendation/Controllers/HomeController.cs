@@ -33,11 +33,11 @@ namespace Movie_Recommendation.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> MovieRecommend(string genre, string genre1, string genre2, string genre3, string genre4, string hateGenre, string hateGenre1, string hateGenre2, string hateGenre3, string hateGenre4, int age, int rating)
+        public async Task<IActionResult> MovieRecommend(string genre, string genre1, string genre2, string genre3, string genre4, string genre5, string genre6, string genre7, string hateGenre, string hateGenre1, string hateGenre2, string hateGenre3, string hateGenre4, string hateGenre5, string hateGenre6, string hateGenre7, int age, int rating)
         {
             //will create a string to search genres in the api key
             string adult = "";
-            string[] genres = { genre, genre1, genre2, genre3, genre4 };
+            string[] genres = { genre, genre1, genre2, genre3, genre4, genre5, genre6, genre7 };
             string genresKey = "";
             for (int i = 0; i < genres.Length; i++)
             {
@@ -50,7 +50,7 @@ namespace Movie_Recommendation.Controllers
                     }
                 }
             }
-            string[] hateGenres = { hateGenre, hateGenre1, hateGenre2, hateGenre3, hateGenre4 };
+            string[] hateGenres = { hateGenre, hateGenre1, hateGenre2, hateGenre3, hateGenre4, hateGenre5, hateGenre6, hateGenre7 };
             string hateGenresKey = "";
             for (int i = 0; i < hateGenres.Length; i++)
             {
