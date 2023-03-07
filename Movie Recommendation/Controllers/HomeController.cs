@@ -107,11 +107,11 @@ namespace Movie_Recommendation.Controllers
             string gluten = "";
             if(GlutenY!=null)
             {
-                gluten = GlutenY;
+                gluten = GlutenN;
             }
             else
             {
-                gluten = GlutenN;
+                gluten = GlutenY;
             }
             if(candy != null)
             {
