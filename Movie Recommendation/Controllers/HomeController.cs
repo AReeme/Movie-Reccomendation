@@ -46,7 +46,7 @@ namespace Movie_Recommendation.Controllers
                     genresKey += genres[i];
                     if (i != genres.Length - 1)
                     {
-                        genresKey += "%20";
+                        genresKey += "%2C";
                     }
                 }
             }
@@ -59,7 +59,7 @@ namespace Movie_Recommendation.Controllers
                     hateGenresKey += hateGenres[i];
                     if (i != hateGenres.Length - 1)
                     {
-                        hateGenresKey += "%20";
+                        hateGenresKey += "%2C";
                     }
                 }
             }
@@ -79,7 +79,7 @@ namespace Movie_Recommendation.Controllers
                 Random random = new Random();
 				MovieResults rMovie = JsonConvert.DeserializeObject<MovieResults>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
 
-                int r = random.Next(0, 10);
+                int r = random.Next(0, rMovie.Results.Count());
                 return View("MovieRecommend", rMovie.Results[r]);
             }
 
