@@ -9,7 +9,7 @@
   <main>
     <h1>Movie Quiz</h1>
     <form id="Movie-Quiz" action="/Home/MovieRecommend">
-      <div>
+        <div>
         <label for="sfw-mode-checkbox">Enable SFW Mode</label>
         <input type="checkbox" id="sfw-mode-checkbox">
       </div>
@@ -20,6 +20,9 @@
         <input type="checkbox" name="genre2" value="18">Drama<br>
         <input type="checkbox" name="genre3" value="27">Horror<br>
         <input type="checkbox" name="genre4" value="10749">Romance<br>
+        <input type="checkbox" name="genre5" value="53">Thriller<br>
+        <input type="checkbox" name="genre6" value="12">Adventure<br>
+        <input type="checkbox" name="genre7" value="878">Sci-Fi<br>
       </div>
       <div class="question">
         <p>Which Genre's do you hate?</p>
@@ -28,6 +31,9 @@
         <input type="checkbox" name="hategenre2" value="18">Drama<br>
         <input type="checkbox" name="hategenre3" value="27">Horror<br>
         <input type="checkbox" name="hategenre4" value="10749">Romance<br>
+        <input type="checkbox" name="hategenre5" value="53">Thriller<br>
+        <input type="checkbox" name="hategenre6" value="12">Adventure<br>
+        <input type="checkbox" name="hategenre7" value="878">Sci-Fi<br>
       </div>
       <div class="question">
         <p>Age</p>
@@ -47,7 +53,7 @@
       <input type="submit" value="Finish Quiz" class="finish-quiz" style="display:none">
     </form>
     <script src="~/js/quiz.js"></script>
-    <script>
+        <script>
       var sfwModeCheckbox = document.getElementById('sfw-mode-checkbox');
       sfwModeCheckbox.addEventListener('click', function() {
         if (this.checked) {
