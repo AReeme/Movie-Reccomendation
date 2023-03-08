@@ -34,6 +34,48 @@
                 <th>Overview</th>
                 <td>@Model.overview</td>
             </tr>
+            <tr>
+                <th>Genres</th>
+                @for (int i = 0; i < Model.genre_ids.Count(); i++)
+                {
+                    @if(Model.genre_ids[i] == 28)
+                    {
+                        <td>Action</td>   
+                    }
+                    @if (Model.genre_ids[i] == 35)
+                    {
+                        <td>Comedy</td>
+                    }
+                    @if (Model.genre_ids[i] == 18)
+                    {
+                        <td>Drama</td>   
+                    }
+                    @if (Model.genre_ids[i] == 27)
+                    {
+                         <td>Horror</td>   
+                    }
+                    @if (Model.genre_ids[i] == 10749)
+                    {
+                         <td>Romance</td>   
+                    }
+                    @if (Model.genre_ids[i] == 53)
+                    {
+                          <td>Thriller</td>   
+                    }
+                    @if (Model.genre_ids[i] == 12)
+                    {
+                          <td>Adventure</td>   
+                    }
+                    @if (Model.genre_ids[i] == 878)
+                    {
+                        <td>Sci-Fi</td>
+                    }
+                    else
+                    {
+                        <td>Other =D</td>
+                    }
+                }
+            </tr>
         </table>
     </main>
 </body>

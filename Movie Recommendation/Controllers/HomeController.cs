@@ -134,7 +134,10 @@ namespace Movie_Recommendation.Controllers
                 int r = random.Next(snack.Count);
                 return View(snack.ElementAt(r));
             }
-            return Content("Filter did not work");
+            List<Snack> bsnack = dal.FilterSnacks("food", "Yes").ToList();
+            var brandom = new Random();
+            int rb = brandom.Next(bsnack.Count);
+            return View(bsnack.ElementAt(rb));
         }
 
         public IActionResult Privacy()
