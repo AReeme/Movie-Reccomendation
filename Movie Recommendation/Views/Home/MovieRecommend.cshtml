@@ -36,45 +36,72 @@
             </tr>
             <tr>
                 <th>Genres</th>
-                @for (int i = 0; i < Model.genre_ids.Count(); i++)
-                {
-                    @if(Model.genre_ids[i] == 28)
-                    {
-                        <td>Action</td>   
+                <td>
+                    @{
+                        string genreNames = "";
+                        for (int i = 0; i < Model.genre_ids.Count(); i++)
+                        {
+
+                            if (Model.genre_ids[i] == 28)
+                            {
+                                genreNames += "Action";
+                            }
+                            else if (Model.genre_ids[i] == 35)
+                            {
+                                genreNames += "Comedy";
+                            }
+                            else if (Model.genre_ids[i] == 18)
+                            {
+                                genreNames += "Drama";
+                            }
+                            else if (Model.genre_ids[i] == 27)
+                            {
+                                genreNames += "Horror";
+                            }
+                            else if (Model.genre_ids[i] == 10749)
+                            {
+                                genreNames += "Romance";
+                            }
+                            else if (Model.genre_ids[i] == 53)
+                            {
+                                genreNames += "Thriller";
+                            }
+                            else if (Model.genre_ids[i] == 12)
+                            {
+                                genreNames += "Adventure";
+                            }
+                            else if (Model.genre_ids[i] == 878)
+                            {
+                                genreNames += "Sci-Fi";
+                            }
+                            else if (Model.genre_ids[i] == 36)
+                            {
+                                genreNames += "History";
+                            }
+                            else if (Model.genre_ids[i] == 14)
+                            {
+                                genreNames += "Fantasy";
+                            }
+                            else if (Model.genre_ids[i] == 16)
+                            {
+                                genreNames += "Animation";
+                            }
+                            else if (Model.genre_ids[i] == 10751)
+                            {
+                                genreNames += "Family";
+                            }
+                            else
+                            {
+                                genreNames += "Other =D ";
+                            }
+                            if (i > Model.genre_ids.Count())
+                            {
+                                genreNames += ", ";
+                            }
+                        }
                     }
-                    @if (Model.genre_ids[i] == 35)
-                    {
-                        <td>Comedy</td>
-                    }
-                    @if (Model.genre_ids[i] == 18)
-                    {
-                        <td>Drama</td>   
-                    }
-                    @if (Model.genre_ids[i] == 27)
-                    {
-                         <td>Horror</td>   
-                    }
-                    @if (Model.genre_ids[i] == 10749)
-                    {
-                         <td>Romance</td>   
-                    }
-                    @if (Model.genre_ids[i] == 53)
-                    {
-                          <td>Thriller</td>   
-                    }
-                    @if (Model.genre_ids[i] == 12)
-                    {
-                          <td>Adventure</td>   
-                    }
-                    @if (Model.genre_ids[i] == 878)
-                    {
-                        <td>Sci-Fi</td>
-                    }
-                    else
-                    {
-                        <td>Other =D</td>
-                    }
-                }
+                    @genreNames
+                </td>
             </tr>
         </table>
     </main>
