@@ -27,8 +27,8 @@
                 </td>
             </tr>
             <tr>
-                <th>Popularity</th>
-                <td>@Model.popularity.ToString()</td>
+                <th>Vote Average</th>
+                <td>@Model.vote_average.ToString()</td>
             </tr>
             <tr>
                 <th>Overview</th>
@@ -94,7 +94,7 @@
                             {
                                 genreNames += "Other =D ";
                             }
-                            if (i > Model.genre_ids.Count())
+                            if (i < Model.genre_ids.Count())
                             {
                                 genreNames += ", ";
                             }
