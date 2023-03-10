@@ -80,6 +80,10 @@ namespace Movie_Recommendation.Controllers
 				MovieResults rMovie = JsonConvert.DeserializeObject<MovieResults>(await client.GetStringAsync(url + "discover/movie" + "?api_key=" + key + "&language=en-US&include_adult=" + adult + "&vote_average.gte=" + rating + "&with_genres=" + genresKey + "&without_genres=" + hateGenresKey));
 
                 int r = random.Next(0, rMovie.Results.Count());
+                if(rMovie.Results.Count() <= 0)
+                {
+                    return Content("No Movies found");
+                }
                 return View("MovieRecommend", rMovie.Results[r]);
             }
 
