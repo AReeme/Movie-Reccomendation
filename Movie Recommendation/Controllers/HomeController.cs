@@ -82,7 +82,7 @@ namespace Movie_Recommendation.Controllers
                 int r = random.Next(0, rMovie.Results.Count());
                 if(rMovie.Results.Count() <= 0)
                 {
-                    return Content("No Movies found");
+                    return Content("Why do you like everything? What are you? Spongebob?");
                 }
                 return View("MovieRecommend", rMovie.Results[r]);
             }
